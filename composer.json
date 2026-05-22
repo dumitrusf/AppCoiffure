@@ -1,16 +1,20 @@
 {
-    "name": "codigoconjuan/app-salon_php_mvc_js_sass",
-    "description": "Proyecto PHP 8, MVC, SQL, SASS, Active Record",
+    "name": "dumit/app-salon",
+    "description": "Application web MVC en PHP 8 et MySQL pour la gestion de rendez-vous d'un salon de beauté.",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "MVC\\" : "./",
-            "Controllers\\" : "./controllers",
-            "Model\\" : "./models",
-            "Classes\\" : "./classes"
+            "MVC\\": "./",
+            "Controllers\\": "./controllers/",
+            "Model\\": "./models/",
+            "Views\\": "./views/"
         }
     },
-    "require": {
-        "phpmailer/phpmailer": "^6.5"
-    }
+    "authors": [
+        {
+            "name": "Dumitru Stefan-Fernando",
+            "email": "dumitrustefanfernando@outlook.com"
+        }
+    ],
+    "require": {}
 }
