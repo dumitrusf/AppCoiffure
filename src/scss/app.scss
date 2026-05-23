@@ -1,1 +1,7 @@
 @use 'base';
+@use 'layout';
+@use 'componentes';
+
+body {
+    scrollbar-color: transparent transparent;
+}

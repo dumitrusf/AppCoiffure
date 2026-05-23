@@ -22,3 +22,16 @@ p {
     color: v.$blanco;
     font-size: 2rem;
 }
+
+.nombre-pagina {
+    text-align: center;
+    font-size: 4rem;
+    margin: 5rem 0;
+    font-weight: v.$black;
+}
+
+.descripcion-pagina {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 5rem 0;
+}
