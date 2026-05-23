@@ -6,12 +6,24 @@ import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import terser from 'gulp-terser'
 import sharp from 'sharp'
+import browserSync from 'browser-sync'
 
 const sass = gulpSass(dartSass)
+const bs = browserSync.create()
 
 const paths = {
     scss: 'src/scss/**/*.scss',
-    js: 'src/js/**/*.js'
+    js: 'src/js/**/*.js',
+    imagenes: 'src/img/**/*',
+    php: [
+        'views/**/*.php',
+        'controllers/**/*.php',
+        'models/**/*.php',
+        'includes/**/*.php',
+        'classes/**/*.php',
+        'public/index.php',
+        'Router.php'
+    ]
 }
 
 export function css( done ) {
@@ -51,11 +63,9 @@ function procesarImagenes(file, outputSubDir) {
     const extName = path.extname(file)
 
     if (extName.toLowerCase() === '.svg') {
-        // If it's an SVG file, move it to the output directory
         const outputFile = path.join(outputSubDir, `${baseName}${extName}`);
-    fs.copyFileSync(file, outputFile);
+        fs.copyFileSync(file, outputFile);
     } else {
-        // For other image formats, process them with sharp
         const outputFile = path.join(outputSubDir, `${baseName}${extName}`);
         const outputFileWebp = path.join(outputSubDir, `${baseName}.webp`);
         const outputFileAvif = path.join(outputSubDir, `${baseName}.avif`);
@@ -67,10 +77,27 @@ function procesarImagenes(file, outputSubDir) {
     }
 }
 
-export function dev() {
-    watch( paths.scss, css );
-    watch( paths.js, js );
-    watch('src/img/**/*.{png,jpg}', imagenes)
+function reload(done) {
+    bs.reload()
+    done()
 }
 
-export default series( js, css, imagenes, dev )
+export function serve(done) {
+    bs.init({
+        proxy: 'localhost:8000',
+        port: 3000,
+        open: true,
+        notify: true,
+        ghostMode: false
+    })
+    done()
+}
+
+export function dev() {
+    watch( paths.scss, series(css, reload) );
+    watch( paths.js, series(js, reload) );
+    watch('src/img/**/*.{png,jpg,jpeg,svg}', series(imagenes, reload));
+    watch( paths.php, reload );
+}
+
+export default series( js, css, imagenes, serve, dev )
