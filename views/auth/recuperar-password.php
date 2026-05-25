@@ -1,5 +1,5 @@
-<h1 class="nombre-pagina">Recuperar Password</h1>
-<p class="descripcion-pagina">Coloca tu nuevo password a continuación</p>
+<h1 class="nombre-pagina">Recover Password</h1>
+<p class="descripcion-pagina">Enter your new password below</p>
 
 <?php 
     include_once __DIR__ . "/../templates/alertas.php";
@@ -13,14 +13,14 @@
             type="password"
             id="password"
             name="password"
-            placeholder="Tu Nuevo Password"
+            placeholder="Your New Password"
         />
     </div>
-    <input type="submit" class="boton" value="Guardar Nuevo Password">
+    <input type="submit" class="boton" value="Save New Password">
 
 </form>
 
 <div class="acciones">
-    <a href="/">¿Ya tienes cuenta? Iniciar Sesión</a>
-    <a href="/crear-cuenta">¿Aún no tienes cuenta? Obtener una</a>
+    <a href="/">Do you already have an account? Login</a>
+    <a href="/crear-cuenta">Don't have an account? Create one</a>
 </div>

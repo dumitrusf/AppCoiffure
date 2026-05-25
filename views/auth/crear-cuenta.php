@@ -1,5 +1,5 @@
-<h1 class="nombre-pagina">Crear Cuenta</h1>
-<p class="descripcion-pagina">Llena el siguiente el formulario para crear una cuenta</p>
+<h1 class="nombre-pagina">Create Account</h1>
+<p class="descripcion-pagina">Fill out the following form to create an account</p>
 
 <?php 
     include_once __DIR__ . "/../templates/alertas.php";
@@ -9,34 +9,34 @@
 <form class="formulario" method="POST" action="/crear-cuenta">
   
     <div class="campo">
-        <label for="nombre">Nombre</label>
+        <label for="nombre">Name</label>
         <input
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Tu Nombre"
+            placeholder="Your Name"
             value="<?php echo s($usuario->nombre); ?>"
         />
     </div>
 
     <div class="campo">
-        <label for="apellido">Apellido</label>
+        <label for="apellido">Last name</label>
         <input
             type="text"
             id="apellido"
             name="apellido"
-            placeholder="Tu Apellido"
+            placeholder="Your Last Name"
             value="<?php echo s($usuario->apellido); ?>"
         />
     </div>
 
     <div class="campo">
-        <label for="telefono">Teléfono</label>
+        <label for="telefono">Telephone</label>
         <input
             type="tel"
             id="telefono"
             name="telefono"
-            placeholder="Tu Teléfono"
+            placeholder="Your Telephone"
             value="<?php echo s($usuario->telefono); ?>"
         />
     </div>
@@ -47,7 +47,7 @@
             type="email"
             id="email"
             name="email"
-            placeholder="Tu E-mail"
+            placeholder="Your E-mail"
             value="<?php echo s($usuario->email); ?>"
         />
     </div>
@@ -58,16 +58,16 @@
             type="password"
             id="password"
             name="password"
-            placeholder="Tu Password"
+            placeholder="Password"
         />
     </div>
 
-    <input type="submit" value="Crear Cuenta" class="boton">
+    <input type="submit" value="Create Account" class="boton">
 
 
 </form>
 
 <div class="acciones">
-    <a href="/">¿Ya tienes una cuenta? Inicia Sesión</a>
-    <a href="/olvide">¿Olvidaste tu password?</a>
+    <a href="/">Do you already have an account? Login</a>
+    <a href="/olvide">Did you forget your password?</a>
 </div>
