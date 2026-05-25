@@ -1,3 +1,3 @@
-<h1 class="nombre-pagina">Confirma tu cuenta</h1>
+<h1 class="nombre-pagina">Confirm your account</h1>
 
-<p class="descripcion-pagina">Hemos enviado las instrucciones para confirmar tu cuenta a tu e-mail.</p>
+<p class="descripcion-pagina">We have sent the instructions to confirm your account to your email.</p>
