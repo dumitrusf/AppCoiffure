@@ -12,3 +12,9 @@ function s($html) : string {
     $s = htmlspecialchars($html);
     return $s;
 }
+
+function isAuth() {
+    if(!isset($_SESSION['id'])) {
+        header('Location: /');
+    }
+}
