@@ -16,12 +16,14 @@ function s($html) : string {
 function isAuth() : void {
     if(!isset($_SESSION['id'])) {
         header('Location: /');
+        exit;
     }
 }
 
 function isAdmin() : void {
     if(!isset($_SESSION['admin'])) {
         header('Location: /');
+        exit;
     }
 }
 
