@@ -328,3 +328,55 @@ function mostrarResumen() {
 
     resumen.appendChild(botonReservar);
 }
+
+async function reservarCita() {
+    
+    const { nombre, fecha, hora, servicios, id } = cita;
+
+    const idServicios = servicios.map( servicio => servicio.id );
+    // console.log(idServicios);
+
+    const datos = new FormData();
+    
+    datos.append('fecha', fecha);
+    datos.append('hora', hora );
+    datos.append('usuarioId', id);
+    datos.append('servicios', idServicios);
+
+    // console.log([...datos]);
+
+    try {
+        // Petición hacia la api
+        const url = 'http://localhost:3000/api/citas'
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+        console.log(resultado);
+        
+        if(resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Appointment Created',
+                text: 'Your appointment was created successfully',
+                button: 'OK'
+            }).then( () => {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'There was an error saving the appointment'
+        })
+    }
+
+    
+    // console.log([...datos]);
+
+}
