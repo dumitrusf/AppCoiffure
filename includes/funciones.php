@@ -13,7 +13,7 @@ function s($html) : string {
     return $s;
 }
 
-function isAuth() {
+function isAuth() : void {
     if(!isset($_SESSION['id'])) {
         header('Location: /');
     }
