@@ -23,23 +23,23 @@ class Email
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV["EMAIL_HOST"];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'be14e8c4e28f28';
-        $mail->Password = 'beaab44109c8ad';
+        $mail->Port = $_ENV["EMAIL_PORT"];
+        $mail->Username = $_ENV["EMAIL_USER"];
+        $mail->Password = $_ENV["EMAIL_PASS"];
 
-        $mail->setFrom('cuentas@appsalon.com', 'AppSalón');
+        $mail->setFrom('accounts@appcoiffure.com', 'AppCoiffure');
         $mail->addAddress($this->email, $this->nombre);
-        $mail->Subject = 'Confirma tu Cuenta';
+        $mail->Subject = 'Confirm your Account';
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en App Salón, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";
-        $contenido .= "<p>Si tú no solicitaste este cambio, puedes ignorar el mensaje</p>";
+        $contenido .= "<p><strong>Hi, " . $this->nombre . "</strong> You have created your account in App coiffeur, you just have to confirm it by clicking the following link</p>";
+        $contenido .= "<p>Press here: <a href='" . $_ENV["APP_URL"] . "/confirmar-cuenta?token=" . $this->token . "'>Confirm Account</a></p>";
+        $contenido .= "<p>If you did not request this change, you can ignore the message</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
@@ -52,23 +52,23 @@ class Email
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV["EMAIL_HOST"];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'be14e8c4e28f28';
-        $mail->Password = 'beaab44109c8ad';
+        $mail->Port = $_ENV["EMAIL_PORT"];
+        $mail->Username = $_ENV["EMAIL_USER"];
+        $mail->Password = $_ENV["EMAIL_PASS"];
 
-        $mail->setFrom('cuentas@appsalon.com', 'AppSalón');
+        $mail->setFrom('accounts@appcoiffure.com', 'AppCoiffure');
         $mail->addAddress($this->email, $this->nombre);
-        $mail->Subject = 'Reestablece tu Password';
+        $mail->Subject = 'Reset your Password';
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer Password</a></p>";
-        $contenido .= "<p>Si tú no solicitaste este cambio, puedes ignorar el mensaje</p>";
+        $contenido .= "<p><strong>Hi, " . $this->nombre . "</strong> You have requested to reset your password, follow the following link to do it</p>";
+        $contenido .= "<p>Press here: <a href='" . $_ENV["APP_URL"] . "/recuperar?token=" . $this->token . "'>Reset Password</a></p>";
+        $contenido .= "<p>If you did not request this change, you can ignore the message</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 

@@ -1,8 +1,5 @@
 mine/*.md
-.gitnexus
-/claude
-AGENTS.md
-CLAUDE.md
-.claude/skills/gitnexus/
 /node_modules
 /vendor/
+includes/.env
+.env
