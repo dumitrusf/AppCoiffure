@@ -3,3 +3,4 @@ mine/*.md
 /vendor/
 includes/.env
 .env
+.gitnexus
